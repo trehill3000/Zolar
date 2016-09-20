@@ -1,0 +1,54 @@
+/**
+ * Created by mrtreazy3000 on 9/20/2016.
+ */
+import javax.swing.*;
+import java.util.Scanner;
+
+public class flashcard {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        //generate random numbers//
+        int x = (int) ((Math.random() * 9) + 1);
+        int y = (int) ((Math.random() * 9) + 1);
+
+        //display to the users the random numbers//
+        WidgetView WV
+                = new WidgetView();
+        JLabel firstOp
+                = new JLabel("" + x + " and " + y);
+        JLabel secOp
+                = new JLabel("Enter an operation number.");
+        JTextField firstVal
+                = new JTextField(3);
+ // inpu//
+        WV.add(secOp);
+        WV.add(firstOp);
+        WV.add(firstVal);
+
+        JButton eval
+                = new JButton("Press here when you've entered you operation.");
+        String firstNum = firstVal.getText();
+        WV.addAndWait(eval);
+
+        int n1 = Integer.parseInt(firstVal.getText());
+        System.out.println(n1);
+        //operations//
+        if (n1 >= 1 && n1 <= 10) {
+            JLabel op1 = new JLabel(" " + (x + y));
+            WV.add(op1);
+        } else if (n1 % 4 == 0) {
+            JLabel op2 = new JLabel ("" + (y - x));
+            WV.add(op2);
+        } else if (n1 % 5 == 0) {
+            JLabel op3 = new JLabel ( "" + (x / y));
+           WV.add ( op3);
+        } else if (n1 % 2 == 0) {
+            JLabel op4 = new JLabel (" " +((float)x / y));
+            WV.add(op4);
+        } else {
+            JLabel op5 = new JLabel("" + (x * y));
+            WV.add(op5);
+        }
+    }
+}
